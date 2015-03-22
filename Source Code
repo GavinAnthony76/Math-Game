@@ -1,0 +1,135 @@
+using System;
+using System.Media;
+
+namespace MathGame
+{
+    internal class Program
+    {
+        public static void addition()
+        {
+            // sound goes here
+            SoundPlayer  Player = new SoundPlayer();
+            var numberGenerator = new Random();
+            var number1 = numberGenerator.Next(1, 11);
+            var number2 = numberGenerator.Next(1, 11);
+
+            Console.WriteLine("What is the first number plus the second number? " + number1 + " + " + number2 + " =");
+            Player.SoundLocation = "Assets/addition.wav";
+            Player.Play();
+            var answer = int.Parse(Console.ReadLine());
+
+            if (answer == number1 + number2)
+            {
+                Console.WriteLine("That is Correct! Press ENTER");
+                Player.SoundLocation = "Assets/correctAnswer.wav";
+                Player.Play();
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("That is not correct! Press ENTER");
+                Player.SoundLocation = "Assets/incorrectAnswer.wav";
+                Player.Play();
+                Console.ReadKey();
+            }
+        }
+
+        public static void subtraction()
+        {
+            // sound goes here
+            SoundPlayer  Player = new SoundPlayer();
+            var numberGenerator = new Random();
+            var number1 = numberGenerator.Next(1, 11);
+            var number2 = numberGenerator.Next(1, 11);
+
+            Console.WriteLine("What is the first number minus the second number? " + number1 + " - " + number2 + " =");
+            Player.SoundLocation = "Assets/subtraction.wav";
+            Player.Play();
+            var answer = int.Parse(Console.ReadLine());
+
+            if (answer == number1 - number2)
+            {
+                Console.WriteLine("That is Correct! Press ENTER ");
+                Player.SoundLocation = "Assets/correctAnswer.wav";
+                Player.Play();
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("That is not correct! Press ENTER");
+                Player.SoundLocation = "Assets/incorrectAnswer.wav";
+                Player.Play();
+                Console.ReadKey();
+            }
+        }
+
+        public static void multiplication()
+        {
+            //sound goes here
+            SoundPlayer  Player = new SoundPlayer();
+            var numberGenerator = new Random();
+            var number1 = numberGenerator.Next(1, 11);
+            var number2 = numberGenerator.Next(1, 11);
+
+            Console.WriteLine("What is the first number times the second number? " + number1 + " * " + number2 + " =");
+            Player.SoundLocation = "Assets/multiplication.wav";
+            Player.Play();
+            var answer = int.Parse(Console.ReadLine());
+
+            if (answer == number1*number2)
+            {
+                Console.WriteLine("That is Correct! Press ENTER");
+                Player.SoundLocation = "Assets/correctAnswer.wav";
+                Player.Play();
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("That is not correct! Press ENTER");
+                Player.SoundLocation = "Assets/incorrectAnswer.wav";
+                Player.Play();
+                Console.ReadKey();
+            }
+        }
+
+        private static void Main(string[] args)
+        {
+            //sound goes here
+            SoundPlayer Player = new SoundPlayer();
+            Console.WriteLine("Hello and welcome to simple math. Press ENTER to continue. ");
+            Player.SoundLocation = "Assets/Greeting.wav";
+            Player.Play();
+            Console.ReadKey();
+            
+            
+            var numberGenerator = new Random();
+            var repeat = true;
+            while (repeat)
+            {
+                var choice = numberGenerator.Next(1, 4);
+
+                if (choice == 1)
+                    subtraction();
+                else if (choice == 2)
+                    addition();
+                else if (choice == 3)
+                    multiplication();
+                Console.Write("Do you wish to continue? Enter Y for yes or N for no, then press ENTER ");
+                Player.SoundLocation = "Assets/selection.wav";
+                Player.Play();
+                string selection;
+                selection = Console.ReadLine();
+
+                if (selection == "Y" || selection == "y")
+                {
+                    repeat = true;
+                }
+                else if (selection == "N" || selection == "n")
+                {
+                    repeat = false;
+                }
+            }
+            Console.ReadKey();
+        }
+    }
+}
